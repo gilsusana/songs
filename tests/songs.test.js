@@ -321,3 +321,34 @@ describe('function "getLongestSong"', () => {
         ]);
     });
 });
+
+
+//Exercise 8 
+describe('function "getShortestSong"', () => {
+    it('should be declared', () => {
+        expect(typeof getShortestSong).toBe('function');
+    });
+    it('should return an array', () => {
+        expect(getShortestSong(songs) instanceof Array).toBe(true);
+    });
+    it('should return an array of songs with the shortest song', () => {
+        const arr = [
+            { title: "Lust For Life", duration: "2min 35sec" },
+            { title: "Here Comes Your Man", duration: "5min 12sec" }
+        ];
+        expect(getShortestSong(arr)).toEqual([
+            { title: 'Here Comes Your Man', duration: 312 }
+        ]);
+    });
+    it('should return an array of objects that share the same duration', () => {
+        const arr = [
+            { title: "Lust For Life", duration: "5min 12sec" },
+            { title: "Here Comes Your Man", duration: "3min 20sec" },
+            { title: "Enjoy", duration: "5min 12sec" }
+        ];
+        expect(getShortestSong(arr)).toEqual([
+            { title: "Lust For Life", duration: 312 },
+            { title: "Enjoy", duration: 312 }
+        ]);
+    });
+});
